@@ -52,7 +52,7 @@ const theme = responsiveFontSizes(createTheme({
         MuiChip: {
             styleOverrides: {
                 root: {
-                    fontSize: ".9rem",
+                    fontSize: "1rem",
                     letterSpacing: "0.04rem"
                 }
             }

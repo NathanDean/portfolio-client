@@ -4,7 +4,6 @@ import { LanguagesContext } from "../../routes/Root";
 import LinkButton from "./LinkButton";
 import { mobile, tablet } from "../../styling/theme"
 import urlFor from "../../sanity/imageBuilder";
-import { lorem } from "../../lorem";
 
 const Project = ({project, summary}) => {
 
@@ -43,17 +42,11 @@ const Project = ({project, summary}) => {
                     <Typography variant = "body1">{shortDescription}</Typography> 
             
                 :
-
-                    longDescription ? 
                     
-                        longDescription.map(p => {
+                    longDescription.map(p => {
                         const { _key, text, marks } = p.children[0];
                         return <Typography key = {_key} variant = {marks[0] === "strong" ? "h6" : "body1"} sx = {{pb: 2}}>{text}</Typography>
                     })
-
-                    :
-
-                    <Typography variant = "body1">{lorem}</Typography>
 
                 }
 
