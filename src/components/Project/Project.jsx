@@ -14,6 +14,15 @@ const Project = ({project, summary}) => {
     const isMobile = useMediaQuery(mobile);
     const isTablet = useMediaQuery(tablet);
 
+    const toText = longDescription => {
+
+        return longDescription.map(p => {
+            const { _key, text, marks } = p.children[0];
+            return <Typography key = {_key} variant = {marks[0] === "strong" ? "h6" : "body1"} sx = {{pb: 2}}>{text}</Typography>
+        })
+
+    }
+
     return (
 
         <Card raised>
@@ -30,7 +39,7 @@ const Project = ({project, summary}) => {
                 borderTop: "1px solid black",
             }}>
                 <Typography variant = "h4" sx = {{mb: 1.5}}>{name}</Typography>
-                <Box>
+                <Box sx = {{display: "flex", flexWrap: "nowrap"}}>
                     {projectLanguages.map(projectLanguage => {
                         const language = languages.find(el => el._id === projectLanguage._ref)
                         return <Chip key = {language._id} label = {language.name} variant = "contained" sx = {{ml: 0, mr: 1, mb: 1.5, backgroundColor: "#FFC001"}} />
@@ -43,10 +52,7 @@ const Project = ({project, summary}) => {
             
                 :
                     
-                    longDescription.map(p => {
-                        const { _key, text, marks } = p.children[0];
-                        return <Typography key = {_key} variant = {marks[0] === "strong" ? "h6" : "body1"} sx = {{pb: 2}}>{text}</Typography>
-                    })
+                    toText(longDescription)
 
                 }
 

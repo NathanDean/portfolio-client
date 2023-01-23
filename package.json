@@ -8,6 +8,7 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.15",
+    "@portabletext/react": "^2.0.0",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
     "@testing-library/jest-dom": "^5.16.5",

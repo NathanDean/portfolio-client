@@ -11,6 +11,15 @@ const About = () => {
     const src = urlFor(image);
     const isMobile = useMediaQuery(mobile);
 
+    const toText = bio => {
+
+        return bio[0].bio.map(p => {
+            const { _key, text } = p.children[0];
+            return <Typography key = {_key} variant = "body1" sx = {{pb: 2}}>{text}</Typography>;
+        })
+
+    }
+
     return (
 
         <Card xs = {12} sm = {10}>
@@ -25,10 +34,7 @@ const About = () => {
 
                 <Box component = "img" src = {src} sx = {isMobile ? {width: 1, borderRadius: "2.5%"} : {float: "right", ml: 2, mb: 2, borderRadius: "2.5%"}} />
 
-                {bio[0].bio.map(p => {
-                    const { _key, text } = p.children[0];
-                    return <Typography key = {_key} variant = "body1" sx = {{pb: 2}}>{text}</Typography>
-                })}
+                {toText(bio)}
 
             </CardContent>
 
