@@ -5,6 +5,8 @@ import LinkButton from "./LinkButton";
 import { mobile, tablet } from "../../styling/theme"
 import urlFor from "../../sanity/imageBuilder";
 
+import { PortableText } from "@portabletext/react";
+
 const Project = ({project, summary}) => {
 
     const {name, slug, shortDescription, longDescription, projectLanguages, appLink, gitHubLink, image} = project;
@@ -13,15 +15,6 @@ const Project = ({project, summary}) => {
 
     const isMobile = useMediaQuery(mobile);
     const isTablet = useMediaQuery(tablet);
-
-    const toText = longDescription => {
-
-        return longDescription.map(p => {
-            const { _key, text, marks } = p.children[0];
-            return <Typography key = {_key} variant = {marks[0] === "strong" ? "h6" : "body1"} sx = {{pb: 2}}>{text}</Typography>
-        })
-
-    }
 
     return (
 
@@ -51,8 +44,8 @@ const Project = ({project, summary}) => {
                     <Typography variant = "body1">{shortDescription}</Typography> 
             
                 :
-                    
-                    toText(longDescription)
+
+                    <PortableText value = {longDescription} />
 
                 }
 

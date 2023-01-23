@@ -3,22 +3,15 @@ import { Link as RouterLink, useLoaderData } from "react-router-dom";
 import { mobile } from "../styling/theme";
 import { getData } from "../getData";
 import urlFor from "../sanity/imageBuilder";
+import { PortableText } from "@portabletext/react";
 
 const About = () => {
 
-    const { bio } = useLoaderData();
-    const image = bio[0].image.asset._ref;
-    const src = urlFor(image);
+    const data = useLoaderData();
+    const bio = data.bio[0];
+    const { text, image } = bio;
+    const src = urlFor(image.asset._ref);
     const isMobile = useMediaQuery(mobile);
-
-    const toText = bio => {
-
-        return bio[0].bio.map(p => {
-            const { _key, text } = p.children[0];
-            return <Typography key = {_key} variant = "body1" sx = {{pb: 2}}>{text}</Typography>;
-        })
-
-    }
 
     return (
 
@@ -34,7 +27,7 @@ const About = () => {
 
                 <Box component = "img" src = {src} sx = {isMobile ? {width: 1, borderRadius: "2.5%"} : {float: "right", ml: 2, mb: 2, borderRadius: "2.5%"}} />
 
-                {toText(bio)}
+                <PortableText value = {text} />
 
             </CardContent>
 
@@ -54,7 +47,7 @@ const About = () => {
 }
 
 const loader = async () => {
-    const query = "*[_type == 'bio'] {bio, image}";
+    const query = "*[_type == 'bio'] {text, image}";
     const bio = await getData(query);
     return { bio }
 }
