@@ -32,7 +32,7 @@ const Project = ({project, summary}) => {
                 borderTop: "1px solid black",
             }}>
                 <Typography variant = "h4" sx = {{mb: 1.5}}>{name}</Typography>
-                <Box sx = {{display: "flex", flexWrap: "nowrap"}}>
+                <Box sx = {!isTablet && {display: "flex", flexWrap: "nowrap"}}>
                     {projectLanguages.map(projectLanguage => {
                         const language = languages.find(el => el._id === projectLanguage._ref)
                         return <Chip key = {language._id} label = {language.name} variant = "contained" sx = {{ml: 0, mr: 1, mb: 1.5, backgroundColor: "#FFC001"}} />

@@ -62,6 +62,7 @@ const theme = responsiveFontSizes(createTheme({
 
 const mobile = theme.breakpoints.down("sm");
 const tablet = theme.breakpoints.down("md");
+const laptop = theme.breakpoints.up("lg");
 
 export default theme
-export { mobile, tablet }
+export { mobile, tablet, laptop }

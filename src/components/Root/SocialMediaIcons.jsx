@@ -8,7 +8,7 @@ const SocialMediaIcons = () => {
 
     return (
 
-        <Box sx = {!isTablet && {position: "fixed", bottom: 0, right: 0, p: .5}}>
+        <Box sx = {!isTablet && {display: "flex", flexDirection: "column", position: "fixed", bottom: 0, right: 0, p: .5}}>
 
             <IconButton component = {Link} href = "https://github.com/NathanDean" aria-label = "Visit GitHub" sx = {{color: "black"}} >
 
